@@ -1,0 +1,180 @@
+# ANSIBLE GENERAL NOTES
+
+## 💡 CONCEPTS
+
+| Term | Definition |
+|------|------------|
+| **Automation** | The use of machines or technology to perform tasks without much human intervention |
+| **BPA** | Business Process Automation |
+| **IaC** | Infrastructure as Code |
+| **Collection** | A packaging format for bundling and distributing Ansible content, including plugins, roles, modules, and more |
+| **Control Nodes** | Any host with Ansible installed. Ansible control nodes are primarily used to run tasks on managed hosts |
+| **Managed Hosts** | Hosts (Servers) that you manage using Ansible |
+| **Inventory** | A list of managed nodes |
+| **Hostfile** | An inventory file is often known as a hostfile. In it, you can specify your inventory using IPs or hostnames and can organize them into groups |
+| **Tasks** | Actions that Ansible performs on a managed host. You can perform a single task using ad-hoc commands |
+| **Ansible Playbooks** | Lists of repeatable tasks (scripts) written in YAML Ain't Markup Language (YAML), which makes them easy to read, write, and share |
+| **Module** | Small piece of code. Modules are the units of work that Ansible ships out to remote machines |
+| **Plug-ins** | Code that you can add to Ansible to extend it and adapt it to new uses and platforms. Complementos o código complementario que se puede agregar y extiende las capacidades de Ansible |
+| **Red Hat Ansible Tower** | Automation Controller |
+| **Roles** | Units of organization in Ansible |
+| **PyPI** | Python Package Index |
+| **Ad Hoc Command** | A way of executing a single Ansible task quickly, one that you do not need to save to run again later. They are simple, online operations that can be run without writing a playbook |
+| **Pattern** | An Ansible pattern can refer to a single host, an IP address, an inventory group, a set of groups, or all hosts in your inventory |
+| **Task** | The application of a module to perform a specific unit of work |
+| **Play** | A sequence of tasks to be applied, in order, to one or more hosts selected from your inventory |
+| **Playbook** | A text file containing a list of one or more plays to run in a specific order |
+| **Block** | Blocks create logical groups of tasks. Blocks also offer ways to handle task errors, similar to exception handling in many programming languages |
+| **Library** | Ansible refers to the collection of available modules as a library |
+
+---
+
+## 📝 NOTES
+
+### General Information
+
+- **Ansible playbooks** are automation tools that are also easy for humans to read, comprehend, and change. No special coding skills are required to write them.
+
+- **Ansible is the language of DevOps.**
+
+- There are **two types of machines** in the Ansible architecture: **control nodes** and **managed hosts**.
+
+- **Tasks, plays, and playbooks** are designed to be **idempotent**. This means that you can safely run a playbook on the same hosts multiple times. When your systems are in the correct state, the playbook makes no changes when you run it.
+
+- **Related to Ansible:** YAML, GIT, TERRAFORM
+
+- **Ansible is written in Python.**
+
+- **AWX** is a project of Ansible and it is a WebUI.
+
+- **Idempotent**, that is, running a module multiple times in a sequence should have the same effect as running it just once.
+
+### Ansible Configuration Files
+
+- Ansible Configuration Files may be placed in different locations. Most common locations:
+  1. `ANSIBLE_CONFIG` environment variable
+  2. `./ansible.cfg`
+  3. `~/ansible.cfg`
+  4. `/etc/ansible/ansible.cfg`
+
+- The **search order** for ansible configuration file is:
+  `ANSIBLE_CONFIG` → `./ansible.cfg` → `~/ansible.cfg` → `/etc/ansible/ansible.cfg`
+
+- `ANSIBLE_CONFIG` overrides the default Ansible Configuration Settings.
+
+### Ad Hoc Commands
+
+- Ad hoc commands are executed or running using the command `ansible` instead of `ansible-playbook`
+
+- The difference is: with `ansible-playbook` you can execute a playbook with a lot of tasks and with `ansible` you just can execute a task.
+
+- Ad hoc commands can run a single, simple task against a set of targeted hosts as a one-time command. The real power of Ansible, however, is in learning how to use playbooks to run multiple, complex tasks against a set of targeted hosts in an easily repeatable manner.
+
+### Playbooks
+
+- **Dry Run:** This causes Ansible to report what changes would have occurred if the playbook were executed, but does not make any actual changes to managed hosts.
+
+#### Indentation Rules
+
+```
+4 spaces + " - " for tasks names
+6 spaces without " - " for module names
+8 spaces for actions/task and state of module (Module Attributes)
+10 spaces + " - " for listing services/packages to apply on
+```
+
+That's consistent indentation.
+
+### Variables
+
+- Variables are referenced by placing the variable name in double curly braces `{{ }}`
+
+---
+
+## ❓ QUESTIONS
+
+1. What is it used for?
+2. Why use automation?
+3. What is Ansible?
+4. What is the difference between Ansible Community and Ansible Automation Platform?
+5. Can I have python and Java in my MAC at the same time?
+6. What is pip?
+7. Ansible and Ansible-Playbook commands, what's the difference?
+8. What is the difference between static and dynamic inventories?
+9. Why are ansible configuration files important? Why is important to know how to configure ansible configuration files?
+10. What sections do the Ansible Configuration Files have?
+11. What is the /etc/hosts file used for?
+12. What's the difference between ansible-playbooks and scripts?
+13. Why running ansible modules using python?
+14. What does the module command?
+15. What is a fact in ansible?
+
+---
+
+## ✅ ANSWERS
+
+1. **Use Cases:** Eliminate repetition and simplify workflows, Manage and maintain system configuration, Continuously deploy complex software, Perform zero-downtime rolling updates.
+
+2. We can use automation to ensure that all our systems are quickly and correctly deployed and configured. This allows us to automate the repetitive tasks in our daily schedule, freeing up our time and allowing us to focus on more critical things.
+
+3. Ansible is an open source automation platform. It is a simple automation language that can perfectly describe an IT application infrastructure in Ansible Playbooks. It is also an automation engine that runs Ansible Playbooks.
+
+4. **Red Hat Ansible Automation Platform** is a subscription-based enterprise product. **Ansible Community** is free but unsupported.
+
+5. Yes, https://www.quora.com/Will-having-both-Python-and-Java-on-my-laptop-affect-each-other-or-any-other-languages
+
+6. It's the python package index: https://realpython.com/what-is-pip/
+
+7. https://stackoverflow.com/questions/64723019/what-is-difference-between-running-the-commands-ansible-and-ansible-playbook
+   - The difference is: with `ansible-playbook` you can execute a playbook with a lot of tasks and with `ansible` you just can execute a task.
+
+8. **Static inventories** are defined by text file and **dynamic inventories** are defined by scripts to get information from external resources.
+
+9. It's important because Ansible Configuration Files tells Ansible how to behave in the systems.
+
+10. No answers yet…
+
+11. A
+
+12. https://news.ycombinator.com/item?id=7694836#
+
+---
+
+## 🔗 SOURCE OF INFORMATION
+
+### General Resources
+
+- [IBM - Automation](https://www.ibm.com/topics/automation) (Automation v1)
+- [Spiceworks - What is Automation](https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-automation/) (Automation v2)
+- [Zeet - IaC Best Practices](https://zeet.co/blog/infrastructure-as-code-best-practices)
+- [Red Hat - Getting Started with Ansible](https://www.redhat.com/sysadmin/getting-started-ansible) (Ansible Concepts)
+- [Ansible Docs - Ad hoc Commands](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html)
+
+### Official Documentation
+
+- [Ansible.com](https://www.ansible.com) (Read First)
+- [Ansible - Getting Started](https://docs.ansible.com/ansible/latest/getting_started/introduction.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) (Read Must)
+- [Ansible - How Ansible Works](https://www.ansible.com/how-ansible-works/) (Read Secondly)
+- [Red Hat - Learning Ansible Tutorial](https://www.redhat.com/en/topics/automation/learning-ansible-tutorial)
+- [Red Hat Developers - YAML Essentials for Ansible](https://developers.redhat.com/learn/ansible/yaml-essentials-ansible?extIdCarryOver=true&sc_cid=7015Y000003szaeQAA)
+
+### AWX Resources
+
+- [AWX Documentation](https://ansible.readthedocs.io/projects/awx/en/latest/index.html)
+- [Ansible FAQ](https://www.ansible.com/faq/)
+- [Red Hat - AWX vs Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible/compare-awx-vs-ansible-automation-platform?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW)
+
+### Additional Resources
+
+- [Medium - Ansible Vault vs HashiCorp Vault](https://abdennoor.medium.com/egg-vs-chicken-ansible-vault-vs-hashicorp-vault-vs-kubernetes-secrets-1e78fc98917b)
+- **Video:** Ansible for Beginners: Learn the Fundamentals of IT Automation - Part 1 (Full Course)
+
+### Configuration File Resources
+
+- [Ansible Docs - Configuration Reference](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
+- [Ansible Docs - Configuration Introduction](https://docs.ansible.com/ansible/latest/installation_guide/intro_configuration.html#command-line-options)
+- [GitHub - Ansible Config Example](https://github.com/ansible/ansible/blob/stable-2.9/examples/ansible.cfg)
+
+---
+
+*Last Updated: 2026*
